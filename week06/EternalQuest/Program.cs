@@ -8,9 +8,7 @@ class Program
         CREATIVITY:
         Added multiple goal types that use polymorphism,
         allowing the same RecordEvent() method to behave
-        differently depending on the goal type. Also added
-        score tracking so users can see their progress as
-        they complete goals.
+        differently depending on the goal type.
         */
 
         GoalManager manager = new GoalManager();
@@ -43,8 +41,7 @@ class Program
                 Console.Write("Points: ");
                 int points = int.Parse(Console.ReadLine());
 
-                manager.AddGoal(
-                    new SimpleGoal(name, description, points));
+                manager.AddGoal(new SimpleGoal(name, description, points));
             }
             else if (choice == "2")
             {
@@ -57,4 +54,44 @@ class Program
                 Console.Write("Points: ");
                 int points = int.Parse(Console.ReadLine());
 
-            
+                manager.AddGoal(new EternalGoal(name, description, points));
+            }
+            else if (choice == "3")
+            {
+                Console.Write("Goal name: ");
+                string name = Console.ReadLine();
+
+                Console.Write("Description: ");
+                string description = Console.ReadLine();
+
+                Console.Write("Points: ");
+                int points = int.Parse(Console.ReadLine());
+
+                Console.Write("Target completions: ");
+                int target = int.Parse(Console.ReadLine());
+
+                Console.Write("Bonus points: ");
+                int bonus = int.Parse(Console.ReadLine());
+
+                manager.AddGoal(
+                    new ChecklistGoal(
+                        name,
+                        description,
+                        points,
+                        target,
+                        bonus));
+            }
+            else if (choice == "4")
+            {
+                manager.DisplayGoals();
+
+                Console.Write("Which goal did you complete? ");
+                int goalNumber = int.Parse(Console.ReadLine());
+
+                manager.RecordEvent(goalNumber - 1);
+            }
+        }
+
+        Console.WriteLine("Goodbye!");
+    }
+}
