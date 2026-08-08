@@ -4,6 +4,15 @@ class Program
 {
     static void Main(string[] args)
     {
+        /*
+        CREATIVITY:
+        Added multiple goal types that use polymorphism,
+        allowing the same RecordEvent() method to behave
+        differently depending on the goal type. Also added
+        score tracking so users can see their progress as
+        they complete goals.
+        */
+
         GoalManager manager = new GoalManager();
 
         string choice = "";
@@ -11,7 +20,6 @@ class Program
         while (choice != "5")
         {
             Console.WriteLine("\nEternal Quest");
-            Console.WriteLine($"Current Score: ");
             manager.DisplayScore();
 
             Console.WriteLine("\nMenu Options:");
@@ -49,45 +57,4 @@ class Program
                 Console.Write("Points: ");
                 int points = int.Parse(Console.ReadLine());
 
-                manager.AddGoal(
-                    new EternalGoal(name, description, points));
-            }
-            else if (choice == "3")
-            {
-                Console.Write("Goal name: ");
-                string name = Console.ReadLine();
-
-                Console.Write("Description: ");
-                string description = Console.ReadLine();
-
-                Console.Write("Points: ");
-                int points = int.Parse(Console.ReadLine());
-
-                Console.Write("Target completions: ");
-                int target = int.Parse(Console.ReadLine());
-
-                Console.Write("Bonus points: ");
-                int bonus = int.Parse(Console.ReadLine());
-
-                manager.AddGoal(
-                    new ChecklistGoal(
-                        name,
-                        description,
-                        points,
-                        target,
-                        bonus));
-            }
-            else if (choice == "4")
-            {
-                manager.DisplayGoals();
-
-                Console.Write("Which goal did you complete? ");
-                int goalNumber = int.Parse(Console.ReadLine());
-
-                manager.RecordEvent(goalNumber - 1);
-            }
-        }
-
-        Console.WriteLine("Goodbye!");
-    }
-}
+            
