@@ -1,0 +1,3 @@
+250
+ChecklistGoal|Buy groceries|Groceries for youth activity on Saturday|100|50|2|2
+ChecklistGoal|Buy groceries|Groceries for youth activity on Saturday|100|50|2|0
